@@ -1,0 +1,100 @@
+{
+  "name": "my-umd-module",
+  "version": "1.0.0",
+  "description": "My UMD module description",
+  "main": "dist/index.js",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-account/my-umd-module.git"
+  },
+  "author": {
+    "name": "Your name",
+    "url": "https://github.com/your-account"
+  },
+  "keywords": [
+    "umd",
+    "module"
+  ],
+  "engines": {
+    "node": ">= 4.2"
+  },
+  "dependencies": {
+    "emitus": "^1.1.4"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.7.7",
+    "babel-cli": "^6.23.0",
+    "babel-eslint": "^7.1.1",
+    "babel-loader": "^6.4.0",
+    "babel-plugin-dev-expression": "^0.2.1",
+    "babel-plugin-istanbul": "^4.0.0",
+    "babel-plugin-transform-object-assign": "^6.22.0",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-stage-2": "^6.22.0",
+    "babel-register": "^6.23.0",
+    "clean-css-cli": "^4.0.8",
+    "coveralls": "^2.12.0",
+    "cross-env": "^3.2.3",
+    "css-loader": "^0.27.2",
+    "eslint": "^3.17.1",
+    "eslint-config-standard": "^7.0.1",
+    "eslint-loader": "^1.6.3",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^2.1.1",
+    "html-loader": "^0.4.5",
+    "html-webpack-plugin": "^2.28.0",
+    "jsdom": "^9.12.0",
+    "node-sass": "4.5.0",
+    "nyc": "^10.1.2",
+    "postcss-loader": "^1.3.3",
+    "sass-loader": "^6.0.3",
+    "style-loader": "^0.13.2",
+    "tape": "^4.6.3",
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.4.1"
+  },
+  "scripts": {
+    "start": "cross-env NODE_ENV=development webpack-dev-server",
+    "build": "cross-env NODE_ENV=production webpack",
+    "lint": "eslint src",
+    "test": "npm run lint && cross-env BABEL_ENV=test nyc npm run test:tape",
+    "test:tape": "tape -r babel-register ./__tests__/*.test.js",
+    "coverage": "coveralls < ./coverage/lcov.info"
+  },
+  "babel": {
+    "presets": [
+      "es2015",
+      "stage-2"
+    ],
+    "plugins": [
+      "dev-expression",
+      "transform-object-assign"
+    ],
+    "env": {
+      "test": {
+        "plugins": [
+          "dev-expression",
+          "transform-object-assign",
+          "istanbul"
+        ]
+      }
+    }
+  },
+  "nyc": {
+    "include": [
+      "index.js"
+    ],
+    "require": [
+      "babel-register"
+    ],
+    "sourceMap": false,
+    "instrument": false,
+    "checkCoverage": true,
+    "reporter": [
+      "text",
+      "lcov"
+    ]
+  }
+}

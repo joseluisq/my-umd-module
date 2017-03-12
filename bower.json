@@ -1,0 +1,26 @@
+{
+  "name": "my-umd-module",
+  "version": "1.0.0",
+  "description": "My UMD module description",
+  "main": "dist/index.js",
+  "license": "MIT",
+  "homepage": "https://github.com/your-account/my-umd-module",
+  "authors": [
+    "Your name <me@email.com>"
+  ],
+  "moduleType": [
+    "global"
+  ],
+  "keywords": [
+    "umd",
+    "module"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "examples",
+    "__tests__"
+  ]
+}
